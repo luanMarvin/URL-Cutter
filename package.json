@@ -4,12 +4,13 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "build": "mkdir -p dist/src/links dist/src/style && tsc && sqlite3 dist/src/links/links.db < src/links/schema.sql && sass src/style/main.sass dist/src/style/main.css",
-    "build:dev": "sqlite3 src/links/links.db < src/links/schema.sql && sass src/style/main.sass src/style/main.css",
-    "build:win": "mkdir dist\\src\\links dist\\src\\style && tsc && sqlite3 dist\\src\\links\\links.db < src\\links\\schema.sql && sass src\\style\\main.sass dist\\src\\style\\main.css",
+    "build": "mkdir -p dist/src/database dist/src/style && tsc && sqlite3 dist/src/database/links.db < src/database/schema.sql && sass src/style/main.sass dist/src/style/main.css",
+    "build:dev": "sqlite3 src/database/links.db < src/database/schema.sql && sass src/style/main.sass src/style/main.css",
+    "build:win": "mkdir dist\\src\\database dist\\src\\style && tsc && sqlite3 dist\\src\\database\\links.db < src\\database\\schema.sql && sass src\\style\\main.sass dist\\src\\style\\main.css",
     "start": "node dist/src/main.js",
-    "dev": "sass src/style/main.sass src/style/main.css && xdg-open index.html && tsx watch src/main.ts",
+    "dev:linux": "sass src/style/main.sass src/style/main.css && xdg-open index.html && tsx watch src/main.ts",
     "dev:win": "sass src/style/main.sass src/style/main.css && start index.html && tsx watch src/main.ts",
+    "dev": "sass src/style/main.sass src/style/main.css && tsx watch src/main.ts",
     "docker:build": "docker build -t urlcutter .",
     "docker:run": "docker run -p 3000:3000 urlcutter"
   },
