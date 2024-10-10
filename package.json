@@ -1,0 +1,32 @@
+{
+  "name": "url-cutter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "mkdir -p dist/src/links dist/src/style && tsc && sqlite3 dist/src/links/links.db < src/links/schema.sql && sass src/style/main.sass dist/src/style/main.css",
+    "build:dev": "sqlite3 src/links/links.db < src/links/schema.sql && sass src/style/main.sass src/style/main.css",
+    "build:win": "mkdir dist\\src\\links dist\\src\\style && tsc && sqlite3 dist\\src\\links\\links.db < src\\links\\schema.sql && sass src\\style\\main.sass dist\\src\\style\\main.css",
+    "start": "node dist/src/main.js",
+    "dev": "sass src/style/main.sass src/style/main.css && xdg-open index.html && tsx watch src/main.ts",
+    "dev:win": "sass src/style/main.sass src/style/main.css && start index.html && tsx watch src/main.ts",
+    "docker:build": "docker build -t urlcutter .",
+    "docker:run": "docker run -p 3000:3000 urlcutter"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.1"
+  }
+}

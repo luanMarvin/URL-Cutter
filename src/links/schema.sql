@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS links (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  complete_link TEXT NOT NULL,
+  short_link TEXT NOT NULL,
+  name TEXT NOT NULL
+);
