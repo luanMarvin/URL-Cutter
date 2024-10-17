@@ -4,44 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <link rel="icon"  href="icon.png">
     <title>URL Cutter</title>
 </head>
 <body>
-    <div class="container">
-        <h1>URLCUTTER</h1>
+    <div class="main-container">
+        <div class="title-container">
+            <h1 class="title">URL</h1>
+            <h1 class="title-cutter">CUTTER</h1>
+        </div>
+
+        <div>
+            <form id="addLinkForm" class="add-link" onsubmit="addLink(event)">
+                <div class="link-form">
+                    <input type="text" id="name" placeholder="Nome" required>
+                    <input type="text" id="complete_link" placeholder="Link" required>
+                </div>
+                <div>
+                    <button class="addLinkButton" type="submit">Adicionar Link</button>
+                </div>
+            </form>
+        </div>
 
         <ul id="linkList">
             <% links.forEach(link => { %>
                 <li>
-                    <span>
-                        <a href="http://<%= link.complete_link %>" target="_blank"><%= link.name %></a>
-                    </span> 
                     <div>
-                        <span class="icon-text" onclick="window.open(`http://<%= link.complete_link %>`)">Acessar</span>
-                        <span class="icon-text" onclick="deleteLink('<%= link.name %>')">Deletar</span>
-                        <span class="icon-text" onclick="openModal('<%= link.name %>', '<%= link.complete_link %>')">Editar</span>
+                        <a href="http://<%= link.complete_link %>" class="link-text" target="_blank"><%= link.name %></a>
+                    </div> 
+                    <div class="link-menu">
+                        <span class="link-text" onclick="window.open(`http://<%= link.complete_link %>`)">Acessar</span>
+                        <span class="link-text" onclick="deleteLink('<%= link.name %>')">Deletar</span>
+                        <span class="link-text" onclick="openModal('<%= link.name %>', '<%= link.complete_link %>')">Editar</span>
                     </div>
                 </li>
             <% }) %>
         </ul>
-
-        <div class="add-link">
-            <form id="addLinkForm" onsubmit="addLink(event)">
-                <input type="text" id="name" placeholder="Nome" required>
-                <input type="text" id="complete_link" placeholder="Link" required>
-                <button type="submit">Adicionar Link</button>
-            </form>
-        </div>
     </div>
 
     <div id="editModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Editar Link</h2>
+            <h1 class="editLinkTitle">Editar Link</h1>
             <form id="editLinkForm">
-                <input type="text" id="editName" placeholder="Novo Nome" required>
-                <input type="text" id="editCompleteLink" placeholder="Link" required>
-                <button onclick="updateLink(event)">Atualizar Link</button>
+                <input class="editInput" type="text" id="editName" placeholder="Novo Nome" required>
+                <input class="editInput" type="text" id="editCompleteLink" placeholder="Link" required>
+                <button class="addLinkButton" onclick="updateLink(event)">Atualizar Link</button>
             </form>
         </div>
     </div>

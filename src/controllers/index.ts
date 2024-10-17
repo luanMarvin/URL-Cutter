@@ -45,15 +45,11 @@ router.post('/', async (req: Request, res: Response) => {
         const complete_linkClean = complete_link.replace(/^(https?:\/\/)/, '');
         const db = await OpenDB();
         const verify = await db.get(`SELECT name FROM links WHERE name = ?`, [name]);
-        console.log(verify)
         if(verify === undefined){
-            console.log('gravando...')
-            console.log(complete_linkClean, short_link, name)
             await db.run(`INSERT INTO links (complete_link, short_link, name) VALUES (?, ?, ?)`, [complete_linkClean, short_link, name]);
             res.status(201);
             db.close();
         } else {
-            console.log("não gravou")
             res.status(409).json({ message: 'já existe uma url com esse nome'}) //Tentar gravar uma Url já existente
         }
 
@@ -65,7 +61,6 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.put('/', async (req: Request, res: Response) => {
     const { name, complete_link, newname } = req.body;
-    console.log('Request body:', name, complete_link, newname); // Exibe os valores recebidos
 
     try {
         const db = await OpenDB();
@@ -86,7 +81,7 @@ router.delete('/', async (req: Request, res: Response) => {
         await db.run('DELETE from links WHERE name = ?', [name]);
         res.status(200).redirect('/');
         db.close();
-    } catch (err) {
+    } catch (err) { 
         console.error(err);
         res.status(500).json({ message: 'Ocorreu um erro inesperado.' });
     } 

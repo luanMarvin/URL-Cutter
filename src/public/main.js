@@ -55,14 +55,14 @@ async function deleteLink(name) {
             body: JSON.stringify({ name }), // Passa o nome para deletar
         });
 
-        if (response.ok) {
-            location.reload(); // Recarrega a página após a exclusão bem-sucedida
-        } else {
+        if (!response.ok) {
             console.error('Erro ao deletar o link:', response.statusText);
         }
     } catch (error) {
         console.error('Erro no fetch:', error);
     }
+
+    location.reload(); // Mudança para fora do fetch
 }
 
 // POST (Adicionar link)
@@ -79,12 +79,12 @@ async function addLink() {
             body: JSON.stringify({ name: name, complete_link: completeLink }), 
         });
 
-        if (response.ok) {
-            location.reload(); 
-        } else {
+        if (!response.ok) {
             console.error('Erro ao adicionar o link:', response.statusText);
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
+
+    location.reload(); // Mesma mudança
 }

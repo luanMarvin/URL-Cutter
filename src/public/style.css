@@ -1,23 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+  font-family: "Inter", sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #292929;
     margin: 0;
     padding: 0;
 }
 
-.container {
+.main-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: white;
+    background-color: #121212;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.788);
 }
 
-h1 {
+.title-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    color: #333;
 }
+
+.title{
+    color: #ebebeb;
+}
+
+.title-cutter{
+    color: #5600e8;
+}
+
+.add-link {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-form{
+    display: flex;
+}
+
+#name {
+    margin: 0 4px 0 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 45%;
+}
+
+.addLinkButton {
+    margin: 16px 0 0 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3700b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.addLinkButton:hover {
+    background-color: #30009c; 
+}
+
 
 #linkList {
     list-style: none;
@@ -28,51 +82,25 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    border-bottom: 1px solid #985eff;
+    padding: 16px 0;
 }
 
 a {
     text-decoration: none;
 }
 
-.icon {
-    width: 24px;
-    height: 24px;
+
+.link-text {
+    color: #ebebeb;
+}
+
+.link-text:hover {
     cursor: pointer;
-    margin-left: 10px;
-    transition: transform 0.2s; 
 }
 
-.icon:hover {
-    transform: scale(1.1); 
-}
-
-.add-link {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 45%;
-}
-
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #4cae4c; 
+.link-menu .link-text {
+    padding: 0 16px;
 }
 
 .modal {
@@ -85,17 +113,20 @@ button:hover {
     height: 100%;
     overflow: auto; 
     background-color: rgb(0, 0, 0); 
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.6); 
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #121212;
     margin: 15% auto; 
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+    width: 40%; 
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.editLinkTitle{
+    color: #ebebeb;
 }
 
 .close {
@@ -105,32 +136,28 @@ button:hover {
     font-weight: bold;
 }
 
+#editLinkForm{
+    padding: 0 0 8px 0;
+}
+
 .close:hover,
 .close:focus {
-    color: black;
+    color: #30009c;
     text-decoration: none;
     cursor: pointer;
 }
 
-#editLinkForm input[type="text"] {
+#editLinkForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editInput{
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: 100%;
-}
-
-.icon-text {
-    display: inline-block;
-    padding: 10px;
-    margin: 0 5px;
-    cursor: pointer;
-    color: #007BFF; 
-    text-decoration: underline; 
-    transition: color 0.3s ease;
-    text-decoration: none;
-}
-
-.icon-text:hover {
-    color: #0056b3;
+    width: 10vw;
 }
