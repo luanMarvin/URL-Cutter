@@ -4,12 +4,12 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "build": "mkdir -p dist/src/database dist/src/style && tsc && sqlite3 dist/src/database/links.db < src/database/schema.sql",
-    "start": "node dist/src/main.js",
-    "dev": "tsx watch src/main.ts",
-    "docker:build": "docker build -t urlcutter .",
-    "docker:run": "docker run -p 3000:3000 urlcutter"
-  },
+  "build": "mkdirp dist/src/database dist/src/style && tsc && cross-env sqlite3 dist/src/database/links.db < src/database/schema.sql",
+  "start": "node dist/src/main.js",
+  "dev": "tsx watch src/main.ts",
+  "docker:build": "docker build --no-cache -t urlcutter .",
+  "docker:run": "docker run -p 3000:3000 urlcutter"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,6 +24,8 @@
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "mkdirp": "^3.0.1",
     "tsx": "^4.19.1"
   }
 }
