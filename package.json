@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-  "build": "mkdirp dist/src/database dist/src/style && tsc && cross-env sqlite3 dist/src/database/links.db < src/database/schema.sql",
+  "build": "mkdirp dist/src/database dist/src/views dist/src/public && tsc && cp -r src/views dist/src/views && cp -r src/public dist/src/public && cross-env sqlite3 dist/src/database/links.db < src/database/schema.sql",
+  "build:win":"mkdir dist\\src\\database dist\\src\\views dist\\src\\public && tsc && xcopy src\\views dist\\src\\views /E /I /Y && xcopy src\\public dist\\src\\public /E /I /Y && cross-env sqlite3 dist\\src\\database\\links.db < src\\database\\schema.sql",
   "start": "node dist/src/main.js",
   "dev": "tsx watch src/main.ts",
   "docker:build": "docker build --no-cache -t urlcutter .",

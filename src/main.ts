@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 // Configurações para o EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './views'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Para capturar dados do formulário
